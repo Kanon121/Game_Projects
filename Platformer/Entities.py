@@ -8,7 +8,7 @@ class Player():
         self.rect = pygame.Rect(10,10,10,10)
         self.rect.x = x
         self.rect.y = y
-        self.speed = 5
+        self.speed = 2
         self.color = gb.blue
         self.Onground = False
     def Draw(self):
@@ -34,9 +34,7 @@ class Player():
         spx = self.speed
         spy = self.speed
         if e != "pass":  
-            if e == "up":
-                dx = 0
-                dy = -spy
+
             if e =="down":
                 dx = 0
                 dy = spy

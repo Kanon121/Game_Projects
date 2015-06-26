@@ -29,9 +29,7 @@ while gb.playing == True:
     if key[gb.pygame.K_p]:
         gb.maps.Save()
 
-        print gb.ent.player_1.Onground
-    if key[gb.pygame.K_w]:
-        gb.ent.player_1.Move("up")
+
     if key[gb.pygame.K_s]:
         gb.ent.player_1.Move("down")
     if key[gb.pygame.K_a]:
