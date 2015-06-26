@@ -1,5 +1,9 @@
 import Globals as gb
 import Map as maps
+
+maps.Load()
+#maps.Generate_Empty()
+#maps.Save()
 while gb.playing == True:
     for e in gb.pygame.event.get():
         if e.type == gb.pygame.QUIT:
