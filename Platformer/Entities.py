@@ -14,36 +14,38 @@ class Player():
         self.movingDown = False
         self.movingUp = False
 		
-    def Update(self):
-		pygame.draw.rect(gb.screen, (gb.white), player_1)
-		if self.movingRight == True:
-			self.rect.x += self.speed
-		if self.movingLeft == True:
-			self.rect.x -= self.speed
-		if self.movingDown == True:
-			self.rect.y += self.speed
-		if self.movingUp == True:
-			self.rect.y -= self.speed
-		
-			for event in pygame.event.get():
-				if event.type == pygame.KEYDOWN:
-					if event.key == pygame.K_w:
-						player_1.movingUp = True
-					if event.key == pygame.K_s:
-						player_1.movingDown = True
-					if event.key == pygame.K_a:
-						player_1.movingLeft = True
-					if event.key == pygame.K_d:
-						player_1.movingRight = True
-				if event.type == pygame.KEYUP:
-					if event.key == pygame.K_w:
-						player_1.movingUp = False
-					if event.key == pygame.K_s:
-						player_1.movingDown = False
-					if event.key == pygame.K_a:
-						player_1.movingLeft = False
-					if event.key == pygame.K_d:
-						player_1.movingRight = False
+    def Draw(self):
+        pygame.draw.rect(gb.screen, (gb.white), self.rect)
+        if self.movingRight == True:
+            self.rect.x += self.speed
+        if self.movingLeft == True:
+            self.rect.x -= self.speed
+        if self.movingDown == True:
+            self.rect.y += self.speed
+        if self.movingUp == True:
+            self.rect.y -= self.speed
+            
+            
+    def Move(self, event):
+
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_w:
+                self.movingUp = True
+            if event.key == pygame.K_s:
+                self.movingDown = True
+            if event.key == pygame.K_a:
+                self.movingLeft = True
+            if event.key == pygame.K_d:
+                self.movingRight = True
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_w:
+                self.movingUp = False
+            if event.key == pygame.K_s:
+                self.movingDown = False
+            if event.key == pygame.K_a:
+                self.movingLeft = False
+            if event.key == pygame.K_d:
+                self.movingRight = False
 
 
 player_1 = Player(100, 100)
