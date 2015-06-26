@@ -9,10 +9,6 @@ class Player():
         self.rect.x = x
         self.rect.y = y
         self.speed = 5
-        self.movingRight = False
-        self.movingLeft = False
-        self.movingDown = False
-        self.movingUp = False
         self.color = gb.blue
 
     def Draw(self):
