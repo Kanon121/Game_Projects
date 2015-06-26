@@ -18,6 +18,9 @@ $RECYCLE.BIN/
 # Operating System Files
 # =========================
 *.pyc
+*.zip
+"Level 1"
+"Level 2"
 # OSX
 # =========================
 
