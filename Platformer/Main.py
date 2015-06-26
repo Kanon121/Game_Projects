@@ -16,15 +16,16 @@ while gb.playing == True:
         if e.type == gb.pygame.QUIT:
             gb.playing = False
 
-        if e.type == gb.pygame.KEYDOWN:
-            pass
+        ent.player_1.Move(e)
+
 
         if e.type == gb.pygame.MOUSEBUTTONDOWN:
             if gb.editing:
                 edit.Update(e.button)
                         
-    ent.player_1.Update()                      
+                      
     maps.Update()
+    ent.player_1.Draw()
     gb.clock.tick(60)   
     gb.pygame.display.flip()
     gb.DrawWindow()

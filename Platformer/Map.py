@@ -52,7 +52,7 @@ class Tiles():
         self.rect = gb.pygame.Rect(32,32,32,32)
         self.rect.x = x
         self.rect.y = y
-        self.color = gb.white
+        self.color = gb.red
         self.is_wall = True
         TileData.all_tiles.append(self)
          
