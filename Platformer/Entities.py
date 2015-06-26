@@ -15,7 +15,7 @@ class Player():
         self.movingUp = False
 		
     def Draw(self):
-        pygame.draw.rect(gb.screen, (gb.white), self.rect)
+        pygame.draw.rect(gb.screen, (gb.blue), self.rect)
         if self.movingRight == True:
             self.rect.x += self.speed
         if self.movingLeft == True:

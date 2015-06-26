@@ -6,9 +6,9 @@ if gb.editing:
     edit = maps.Edit()
 
 
-#maps.Load()
-maps.Generate_Empty()
-maps.Save()
+maps.Load()
+#maps.Generate_Empty()
+#maps.Save()
 while gb.playing == True:
 
     
@@ -17,7 +17,10 @@ while gb.playing == True:
             gb.playing = False
 
         ent.player_1.Move(e)
-
+        
+        if e.type == gb.pygame.KEYDOWN:
+            if e.key == gb.pygame.K_p:
+                maps.Save()
 
         if e.type == gb.pygame.MOUSEBUTTONDOWN:
             if gb.editing:
