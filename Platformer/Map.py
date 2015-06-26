@@ -1,5 +1,6 @@
 import Globals as gb
 import pickle
+
 # 800 / 32 = 25
 
 
@@ -10,7 +11,7 @@ class MapData():
         self.all_tiles = []
         self.length_x = gb.width / 32
         self.length_y = gb.height / 32
-
+        
         self.tiles_for_append = self.length_x * self.length_y
         self.tiles_for_x = self.length_x
         self.tiles_for_y = self.length_y      
@@ -19,18 +20,18 @@ class MapData():
             
           
 def Save():
-    with open(gb.os.getcwd() + '/saves/' + "Level 1", 'w') as f:
+    with open(gb.os.getcwd() + '/saves/' + gb.MapName, 'w') as f:
         pickle.dump(TileData.all_tiles, f)
         
         
 def Load():
-    with open(gb.os.getcwd() + '/saves/' + "Level 1", 'r') as f:
+    with open(gb.os.getcwd() + '/saves/' + gb.MapName, 'r') as f:
          TileData.all_tiles = pickle.load(f)
             
         
 def Update():
     for tile in TileData.all_tiles:
-        gb.pygame.draw.rect(gb.screen, (gb.blue), tile.rect)         
+        gb.pygame.draw.rect(gb.screen, (tile.color), tile.rect)         
 
 
 
@@ -51,7 +52,11 @@ class Tiles():
         self.rect = gb.pygame.Rect(32,32,32,32)
         self.rect.x = x
         self.rect.y = y
+        self.color = gb.white
+        self.is_wall = True
         TileData.all_tiles.append(self)
+         
+
 
 TileData = MapData()
 
@@ -72,3 +77,31 @@ def Generate_Empty():
             break
 
 
+            
+class Editor():
+    def __init__(self):
+        pass
+    def Update(self, type):
+        posx, posy = gb.pygame.mouse.get_pos()
+        roundX = int(32 * round(posx / 32))
+        roundY = int(32 * round(posy / 32))       
+        for tile in  TileData.all_tiles:
+            if type == 1:
+                #left click
+                 if tile.rect.collidepoint(posx, posy):
+                    tile.color = gb.black
+                    tile.is_wall = False
+            if type == 3:
+                #right click
+                 if tile.rect.collidepoint(posx, posy):
+                    tile.is_wall = True
+                    tile.color = gb.white            
+            
+        
+        
+        
+        
+def Edit():
+    edit = Editor()
+    return edit 
+    
