@@ -20,12 +20,12 @@ class MapData():
             
           
 def Save():
-    with open(gb.os.getcwd() + '/saves/' + "Level 1", 'w') as f:
+    with open(gb.os.getcwd() + '/saves/' + gb.MapName, 'w') as f:
         pickle.dump(TileData.all_tiles, f)
         
         
 def Load():
-    with open(gb.os.getcwd() + '/saves/' + "Level 1", 'r') as f:
+    with open(gb.os.getcwd() + '/saves/' + gb.MapName, 'r') as f:
          TileData.all_tiles = pickle.load(f)
             
         
@@ -52,7 +52,8 @@ class Tiles():
         self.rect = gb.pygame.Rect(32,32,32,32)
         self.rect.x = x
         self.rect.y = y
-        self.color = gb.blue
+        self.color = gb.white
+        self.is_wall = True
         TileData.all_tiles.append(self)
          
 
@@ -80,13 +81,21 @@ def Generate_Empty():
 class Editor():
     def __init__(self):
         pass
-    def Update(self):
+    def Update(self, type):
         posx, posy = gb.pygame.mouse.get_pos()
         roundX = int(32 * round(posx / 32))
         roundY = int(32 * round(posy / 32))       
         for tile in  TileData.all_tiles:
-             if tile.rect.collidepoint(posx, posy):
-                tile.color = gb.red
+            if type == 1:
+                #left click
+                 if tile.rect.collidepoint(posx, posy):
+                    tile.color = gb.black
+                    tile.is_wall = False
+            if type == 3:
+                #right click
+                 if tile.rect.collidepoint(posx, posy):
+                    tile.is_wall = True
+                    tile.color = gb.white            
             
         
         

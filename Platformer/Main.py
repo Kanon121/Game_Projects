@@ -20,8 +20,7 @@ while gb.playing == True:
             pass
         if e.type == gb.pygame.MOUSEBUTTONDOWN:
             if gb.editing:
-                if e.button == 1:
-                    edit.Update()
+                edit.Update(e.button)
                         
                            
     maps.Update()
