@@ -21,22 +21,29 @@ while gb.playing == True:
             if gb.editing:
                 edit.Update(e.button)        
         
-    key = gb.pygame.key.get_pressed()
+
+        
+ 
+        key = gb.pygame.key.get_pressed()
 
     if key[gb.pygame.K_p]:
         gb.maps.Save()
+
+        print gb.ent.player_1.Onground
     if key[gb.pygame.K_w]:
-        gb.ent.player_1.Update("up")
+        gb.ent.player_1.Move("up")
     if key[gb.pygame.K_s]:
-        gb.ent.player_1.Update("down")
+        gb.ent.player_1.Move("down")
     if key[gb.pygame.K_a]:
-        gb.ent.player_1.Update("left")
+        gb.ent.player_1.Move("left")
     if key[gb.pygame.K_d]:
-        gb.ent.player_1.Update("right")
+        gb.ent.player_1.Move("right")
                         
-            
+    else:
+        gb.ent.player_1.Move("pass")
     gb.maps.Update()
-    gb.ent.player_1.Draw() 
+    gb.ent.player_1.Draw()
+    gb.ent.player_1.Gravity()
     gb.clock.tick(60)   
     gb.pygame.display.flip()
     gb.DrawWindow()

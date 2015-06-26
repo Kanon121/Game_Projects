@@ -10,35 +10,47 @@ class Player():
         self.rect.y = y
         self.speed = 5
         self.color = gb.blue
-
+        self.Onground = False
     def Draw(self):
+        
         pygame.draw.rect(gb.screen, (self.color), self.rect)
 
-	
-    def Update(self, e):
-        
-        
-        
+
+
+    def Gravity(self):
+        for tile in gb.maps.TileData.all_tiles:         
+            if tile.rect.top == self.rect.bottom:
+                roundX = int(round(self.rect.x / 32))
+                if tile.Xpos  == roundX:
+                    if tile.is_wall:
+                        self.Onground = True
+
+                else:
+                    self.Onground = False
+        if self.Onground == False:
+            self.Move("down")
+            
+    def Move(self, e):
         spx = self.speed
         spy = self.speed
-        if e == "up":
-            self.Move(0, -spy)
-        if e =="down":
-            self.Move(0, spy)
-        if e == "left":
-            self.Move(-spx, 0)
-        if e == "right":
-            self.Move(spx, 0)
-                
-
-
-
-                   
+        if e != "pass":  
+            if e == "up":
+                dx = 0
+                dy = -spy
+            if e =="down":
+                dx = 0
+                dy = spy
+            if e == "left":
+                dx= -spx
+                dy = 0
+            if e == "right":
+                dx = spx
+                dy = 0
             
-    def Move(self, dx, dy):
-        self.rect.x += dx
-        self.rect.y += dy
-        gb.maps.CheckCollisions(self, dx, dy)
+            
+            self.rect.x += dx
+            self.rect.y += dy
+            gb.maps.CheckCollisions(self, dx, dy)
         
         
 

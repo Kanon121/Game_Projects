@@ -54,15 +54,17 @@ class Tiles():
         self.color = gb.white
         self.is_wall = True
         TileData.all_tiles.append(self)
-         
-
+        self.Xpos = (y / 32)
+        self.Ypos = (y / 32) 
 
 TileData = MapData()
 
 def Generate_Empty():
+
     x = 0
     y = 0
     while  TileData.tiles_for_append != 0:
+
         while  TileData.tiles_for_x != 0:
             tile = Tiles(x,y)
             x += 32
@@ -82,8 +84,7 @@ class Editor():
         pass
     def Update(self, type):
         posx, posy = gb.pygame.mouse.get_pos()
-        roundX = int(32 * round(posx / 32))
-        roundY = int(32 * round(posy / 32))       
+       
         for tile in  TileData.all_tiles:
             if type == 1:
                 #left click
@@ -109,7 +110,7 @@ def CheckCollisions(player, dx, dy):
                     gb.ent.player_1.rect.bottom = tile.rect.top
                 if dy < 0:
                     gb.ent.player_1.rect.top = tile.rect.bottom
-        
+
         
 def Edit():
     edit = Editor()
