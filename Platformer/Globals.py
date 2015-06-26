@@ -26,3 +26,8 @@ clock = pygame.time.Clock()
 def DrawWindow():
 
     screen.fill(black)
+
+    
+    
+import Map as maps
+import Entities as ent

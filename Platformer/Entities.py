@@ -13,40 +13,42 @@ class Player():
         self.movingLeft = False
         self.movingDown = False
         self.movingUp = False
-		
+        self.color = gb.blue
+
     def Draw(self):
-        pygame.draw.rect(gb.screen, (gb.white), self.rect)
-        if self.movingRight == True:
-            self.rect.x += self.speed
-        if self.movingLeft == True:
-            self.rect.x -= self.speed
-        if self.movingDown == True:
-            self.rect.y += self.speed
-        if self.movingUp == True:
-            self.rect.y -= self.speed
-            
-            
-    def Move(self, event):
+        pygame.draw.rect(gb.screen, (self.color), self.rect)
 
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_w:
-                self.movingUp = True
-            if event.key == pygame.K_s:
-                self.movingDown = True
-            if event.key == pygame.K_a:
-                self.movingLeft = True
-            if event.key == pygame.K_d:
-                self.movingRight = True
-        if event.type == pygame.KEYUP:
-            if event.key == pygame.K_w:
-                self.movingUp = False
-            if event.key == pygame.K_s:
-                self.movingDown = False
-            if event.key == pygame.K_a:
-                self.movingLeft = False
-            if event.key == pygame.K_d:
-                self.movingRight = False
+	
+    def Update(self, e):
+        
+        
+        
+        spx = self.speed
+        spy = self.speed
+        if e == "up":
+            self.Move(0, -spy)
+        if e =="down":
+            self.Move(0, spy)
+        if e == "left":
+            self.Move(-spx, 0)
+        if e == "right":
+            self.Move(spx, 0)
+                
 
+
+
+                   
+            
+    def Move(self, dx, dy):
+        self.rect.x += dx
+        self.rect.y += dy
+        gb.maps.CheckCollisions(self, dx, dy)
+        
+        
+
+        
+
+            
 
 player_1 = Player(100, 100)
 

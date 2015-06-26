@@ -1,14 +1,14 @@
 import Globals as gb
-import Map as maps
-import Entities as ent
+
 
 if gb.editing:
-    edit = maps.Edit()
+    edit = gb.maps.Edit()
 
 
-#maps.Load()
-maps.Generate_Empty()
-maps.Save()
+gb.maps.Load()
+#gb.maps.Generate_Empty()
+#gb.maps.Save()
+
 while gb.playing == True:
 
     
@@ -16,16 +16,27 @@ while gb.playing == True:
         if e.type == gb.pygame.QUIT:
             gb.playing = False
 
-        ent.player_1.Move(e)
-
-
+        
         if e.type == gb.pygame.MOUSEBUTTONDOWN:
             if gb.editing:
-                edit.Update(e.button)
+                edit.Update(e.button)        
+        
+    key = gb.pygame.key.get_pressed()
+
+    if key[gb.pygame.K_p]:
+        gb.maps.Save()
+    if key[gb.pygame.K_w]:
+        gb.ent.player_1.Update("up")
+    if key[gb.pygame.K_s]:
+        gb.ent.player_1.Update("down")
+    if key[gb.pygame.K_a]:
+        gb.ent.player_1.Update("left")
+    if key[gb.pygame.K_d]:
+        gb.ent.player_1.Update("right")
                         
-                      
-    maps.Update()
-    ent.player_1.Draw()
+            
+    gb.maps.Update()
+    gb.ent.player_1.Draw() 
     gb.clock.tick(60)   
     gb.pygame.display.flip()
     gb.DrawWindow()

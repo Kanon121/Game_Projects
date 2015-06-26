@@ -11,7 +11,6 @@ class MapData():
         self.all_tiles = []
         self.length_x = gb.width / 32
         self.length_y = gb.height / 32
-        
         self.tiles_for_append = self.length_x * self.length_y
         self.tiles_for_x = self.length_x
         self.tiles_for_y = self.length_y      
@@ -52,7 +51,7 @@ class Tiles():
         self.rect = gb.pygame.Rect(32,32,32,32)
         self.rect.x = x
         self.rect.y = y
-        self.color = gb.red
+        self.color = gb.white
         self.is_wall = True
         TileData.all_tiles.append(self)
          
@@ -98,7 +97,18 @@ class Editor():
                     tile.color = gb.white            
             
         
-        
+def CheckCollisions(player, dx, dy):
+    for tile in TileData.all_tiles:
+        if gb.ent.player_1.rect.colliderect(tile):
+            if tile.is_wall:
+                if dx > 0:
+                    gb.ent.player_1.rect.right = tile.rect.left
+                if dx < 0:
+                    gb.ent.player_1.rect.left = tile.rect.right
+                if dy > 0:
+                    gb.ent.player_1.rect.bottom = tile.rect.top
+                if dy < 0:
+                    gb.ent.player_1.rect.top = tile.rect.bottom
         
         
 def Edit():
