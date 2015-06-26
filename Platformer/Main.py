@@ -18,6 +18,7 @@ while gb.playing == True:
 
         if e.type == gb.pygame.KEYDOWN:
             pass
+
         if e.type == gb.pygame.MOUSEBUTTONDOWN:
             if gb.editing:
                 edit.Update(e.button)
@@ -27,3 +28,4 @@ while gb.playing == True:
     gb.clock.tick(60)   
     gb.pygame.display.flip()
     gb.DrawWindow()
+
