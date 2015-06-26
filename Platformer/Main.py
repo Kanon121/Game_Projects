@@ -1,6 +1,6 @@
 import Globals as gb
 import Map as maps
-
+import Entities as ent
 
 if gb.editing:
     edit = maps.Edit()
@@ -22,7 +22,7 @@ while gb.playing == True:
             if gb.editing:
                 edit.Update(e.button)
                         
-                           
+    ent.player_1.Update()                      
     maps.Update()
     gb.clock.tick(60)   
     gb.pygame.display.flip()
