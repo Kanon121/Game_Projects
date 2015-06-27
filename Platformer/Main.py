@@ -29,7 +29,8 @@ while gb.playing == True:
     if key[gb.pygame.K_p]:
         gb.maps.Save()
 
-
+    if key[gb.pygame.K_SPACE]:
+        gb.ent.player_1.Move("jump")
     if key[gb.pygame.K_s]:
         gb.ent.player_1.Move("down")
     if key[gb.pygame.K_a]:
