@@ -17,6 +17,6 @@ while gb.playing == True:
 
 	maps.Update()
 	ent.player_1.Update()
-    gb.clock.tick(60)   
-    gb.pygame.display.flip()
-    gb.DrawWindow()
+	gb.clock.tick(60)   
+	gb.pygame.display.flip()
+	gb.DrawWindow()
