@@ -1,5 +1,6 @@
 import Globals as gb
 import Map as maps
+import Entities as ent
 
 maps.Load()
 #maps.Generate_Empty()
@@ -12,7 +13,10 @@ while gb.playing == True:
             pass
     
     
-    maps.Update()
+
+
+	maps.Update()
+	ent.player_1.Update()
     gb.clock.tick(60)   
     gb.pygame.display.flip()
     gb.DrawWindow()

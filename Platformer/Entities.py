@@ -1,9 +1,9 @@
 import Globals as gb
+import pygame
 
 
 
-
-class player():
+class Player():
     def __init__(self, x, y):
         self.rect = pygame.Rect(10,10,10,10)
         self.rect.x = x
@@ -13,13 +13,13 @@ class player():
         self.movingLeft = False
         self.movingDown = False
         self.movingUp = False
-        
+    def Update(self):
+	pygame.draw.rect(gb.screen, (gb.white), player_1)
+
         
  
 		
 		
-player_1 = player(100, 100)
+player_1 = Player(100, 100)
 
-Update(self):
-	pygame.draw.rect(screen, (white), player_1)
 
